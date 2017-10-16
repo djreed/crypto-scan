@@ -1,1 +1,1 @@
-# crypto-watch
+# crypto-scan
