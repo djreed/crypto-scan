@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :crypto_scan, CryptoScan.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "crypto_scan",
+  password: "dev_crypto_scan",
   database: "crypto_scan_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
