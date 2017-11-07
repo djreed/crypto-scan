@@ -27,7 +27,7 @@ var transformData = function(data) {
         var coinfsym = CCC.STATIC.CURRENCY.getSymbol(fsym);
         var cointsym = CCC.STATIC.CURRENCY.getSymbol(tsym)
         var incomingTrade = CCC.TRADE.unpack(data);
-        console.log(incomingTrade);
+        // console.log(incomingTrade);
         var newTrade = {
                 Market: incomingTrade['M'],
                 Type: incomingTrade['T'],
