@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :crypto_scan, CryptoScanWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 2143],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :crypto_scan, CryptoScan.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "crypto_scan",
+  password: "dev_crypto_scan",
   database: "crypto_scan_dev",
   hostname: "localhost",
   pool_size: 10

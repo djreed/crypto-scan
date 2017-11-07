@@ -14,7 +14,7 @@ config :crypto_scan, CryptoScanWeb.Endpoint,
 # Configure your database
 config :crypto_scan, CryptoScan.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "crypto_scan",
+  password: "smokedopecracksmack",
   database: "crypto_scan_prod",
   pool_size: 15
