@@ -1,0 +1,28 @@
+<h2>Show Alert</h2>
+
+<ul>
+
+  <li>
+    <strong>Currency:</strong>
+    <%= @alert.currency %>
+  </li>
+
+  <li>
+    <strong>Exchange:</strong>
+    <%= @alert.exchange %>
+  </li>
+
+  <li>
+    <strong>Comparator:</strong>
+    <%= @alert.comparator %>
+  </li>
+
+  <li>
+    <strong>Breakpoint:</strong>
+    <%= @alert.breakpoint %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: alert_path(@conn, :edit, @alert) %></span>
+<span><%= link "Back", to: alert_path(@conn, :index) %></span>

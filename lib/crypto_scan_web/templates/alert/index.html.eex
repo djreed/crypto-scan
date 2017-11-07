@@ -1,0 +1,32 @@
+<h2>Listing Alerts</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Exchange</th>
+      <th>Comparator</th>
+      <th>Breakpoint</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for alert <- @alerts do %>
+    <tr>
+      <td><%= alert.currency %></td>
+      <td><%= alert.exchange %></td>
+      <td><%= alert.comparator %></td>
+      <td><%= alert.breakpoint %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: alert_path(@conn, :show, alert), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: alert_path(@conn, :edit, alert), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: alert_path(@conn, :delete, alert), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Alert", to: alert_path(@conn, :new) %></span>

@@ -18,6 +18,10 @@ defmodule CryptoScanWeb.Router do
 
     resources "/users", UserController
 
+    resources "/follows", FollowController
+
+    resources "/alerts", AlertController
+
     get "/", PageController, :index
   end
 

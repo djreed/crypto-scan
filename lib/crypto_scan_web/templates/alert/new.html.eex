@@ -1,0 +1,5 @@
+<h2>New Alert</h2>
+
+<%= render "form.html", Map.put(assigns, :action, alert_path(@conn, :create)) %>
+
+<span><%= link "Back", to: alert_path(@conn, :index) %></span>
