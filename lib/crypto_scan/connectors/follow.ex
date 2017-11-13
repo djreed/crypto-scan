@@ -6,8 +6,8 @@ defmodule CryptoScan.Connectors.Follow do
 
   schema "follows" do
     field :user_id, :id
-    field :currency, :string
-    field :exchange, :string
+    field :currency, CryptoScan.Currency
+    field :exchange, CryptoScan.Exchange
 
     timestamps()
   end

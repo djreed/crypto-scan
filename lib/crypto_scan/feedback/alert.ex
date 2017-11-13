@@ -8,9 +8,8 @@ defmodule CryptoScan.Feedback.Alert do
     field :user_id, :id
     field :breakpoint, :decimal
     field :comparator, :string
-    field :currency, :string
-    field :exchange, :string
-
+    field :currency, CryptoScan.Currency
+    field :exchange, CryptoScan.Exchange
     timestamps()
   end
 
