@@ -6,9 +6,9 @@ defmodule CryptoScanWeb.PageController do
   end
 
   def sampleCurrencyPage(conn, _params) do
-    map = CryptoScan.price("BTC")
-    price = map["USD"]
+    price = CryptoScan.price("BTC")
     description = CryptoScan.description("1182")
-    render(conn, "sampleCurrencyPage.html", price: price, description: description)
+    allPrices = CryptoScan.priceAllExchanges("BTC")
+    render(conn, "sampleCurrencyPage.html", price: price, description: description, allPrices: allPrices)
   end
 end

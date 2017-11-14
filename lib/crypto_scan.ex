@@ -16,7 +16,20 @@ defmodule CryptoScan do
   def price(currency) do
     resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currency <> "&tsyms=USD")
     data = Poison.decode!(resp.body)
-    data
+    data["USD"]
+  end
+
+  def priceFromExchange(currency, exchange) do
+    resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currency <> "&tsyms=USD&e=" <> exchange)
+    data = Poison.decode!(resp.body)
+    data["USD"]
+  end
+
+  def priceAllExchanges(currency) do
+    allExchanges = [priceFromExchange(currency, "Bitstamp"), priceFromExchange(currency, "BitTrex"),
+    priceFromExchange(currency, "Coinbase"), priceFromExchange(currency, "Bitfinex"),
+    priceFromExchange(currency, "Gemini"), priceFromExchange(currency, "Poloniex")]
+    allExchanges
   end
 
   def priceConverter(currencyToConvert, convertedCurrency) do
