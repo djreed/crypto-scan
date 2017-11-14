@@ -3,7 +3,10 @@
     <h1>Bitcoin</h1>
     <div id="currencyAbbreviation" hidden>BTC</div>
     <h2>Current Aggregate USD Price: $<%= @price %></h2>
-    <h3>Description</h3>
+    <%= for price <- @allPrices do %>
+      <h3>Currency: <%= price.name %> Price: $<%= price.exchangePrice %></h3>
+    <% end %>
+    <h4>Description</h3>
     <p><%= raw @description %></p>
   </div>
   <div class="col-md-6">

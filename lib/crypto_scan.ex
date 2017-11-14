@@ -26,9 +26,12 @@ defmodule CryptoScan do
   end
 
   def priceAllExchanges(currency) do
-    allExchanges = [priceFromExchange(currency, "Bitstamp"), priceFromExchange(currency, "BitTrex"),
-    priceFromExchange(currency, "Coinbase"), priceFromExchange(currency, "Bitfinex"),
-    priceFromExchange(currency, "Gemini"), priceFromExchange(currency, "Poloniex")]
+    allExchanges = [ %{ name: "Bitstamp", exchangePrice: priceFromExchange(currency, "Bitstamp")},
+    %{ name: "BitTrex", exchangePrice: priceFromExchange(currency, "BitTrex")},
+    %{ name: "Coinbase", exchangePrice: priceFromExchange(currency, "Coinbase")},
+    %{ name: "Bitfinex", exchangePrice: priceFromExchange(currency, "Bitfinex")},
+    %{ name: "Gemini", exchangePrice: priceFromExchange(currency, "Gemini")},
+    %{ name: "Poloniex", exchangePrice: priceFromExchange(currency, "Poloniex")} ]
     allExchanges
   end
 
