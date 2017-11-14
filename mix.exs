@@ -44,7 +44,9 @@ defmodule CryptoScan.Mixfile do
       {:comeonin, "~> 4.0"},
       {:pbkdf2_elixir, "~> 0.12"},
       {:distillery, "~> 1.4"},
-      {:exnumerator, "~> 1.3.0"}
+      {:exnumerator, "~> 1.3.0"},
+      {:httpoison, "~> 0.13"},
+      {:poison, "~> 3.1"}
     ]
   end
 

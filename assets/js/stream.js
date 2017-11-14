@@ -524,7 +524,7 @@ CCC.convertValueToDisplay =  function(symbol,value,type,fullNumbers){
 
 
 var streamUrl = "https://streamer.cryptocompare.com/";
-var fsym = "BTC";
+var fsym = document.getElementById('currencyAbbreviation').innerText;
 var tsym = "USD";
 var currentSubs;
 var currentSubsText = "";
@@ -532,7 +532,10 @@ var dataUrl = "https://min-api.cryptocompare.com/data/subs?fsym=" + fsym + "&tsy
 var socket = io(streamUrl);
 
 $.getJSON(dataUrl, function(data) {
-    currentSubs = data['USD']['TRADES'];
+    //currentSubs = data['USD']['TRADES']['0~Bitstamp~BTC~USD'];
+    currentSubs = ["0~Bitstamp~" + fsym + "~USD", "0~BitTrex~" + fsym + "~USD",
+    "0~Coinbase~" + fsym + "~USD", "0~Bitfinex~" + fsym + "~USD",
+    "0~Gemini~" + fsym + "~USD", "0~Poloniex~" + fsym + "~USD"];
     console.log(currentSubs);
     for (var i = 0; i < currentSubs.length; i++) {
         currentSubsText += currentSubs[i] + ", ";

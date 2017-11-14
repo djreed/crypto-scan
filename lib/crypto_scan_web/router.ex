@@ -23,6 +23,7 @@ defmodule CryptoScanWeb.Router do
     resources "/alerts", AlertController
 
     get "/", PageController, :index
+    get "/sampleCurrencyPage", PageController, :sampleCurrencyPage
   end
 
   # Other scopes may use custom stacks.
