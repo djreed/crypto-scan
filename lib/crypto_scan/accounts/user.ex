@@ -6,7 +6,7 @@ defmodule CryptoScan.Accounts.User do
   schema "users" do
     field :email, :string
     field :name, :string
-
+    field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 

@@ -1,1 +1,15 @@
-/* This file is for your main application css. */
+#source {
+    margin: 0;
+}
+
+.BUY {
+    color: green;
+}
+
+.SELL {
+    color: red;
+}
+
+#sub-exchanges {
+    color:gray;
+}
