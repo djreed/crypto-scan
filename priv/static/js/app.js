@@ -2214,7 +2214,9 @@ if (currency) {
   var fsym = currency.innerText;
 }
 var tsym = "USD";
-var exchange = document.getElementById('exchange').innerText;
+if (!currency) {
+  var exchange = document.getElementById('exchange').innerText;
+}
 var currentSubs;
 var currentSubsText = "";
 var dataUrl = "https://min-api.cryptocompare.com/data/subs?fsym=" + fsym + "&tsyms=" + tsym;
