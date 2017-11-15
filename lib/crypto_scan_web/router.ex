@@ -24,6 +24,7 @@ defmodule CryptoScanWeb.Router do
 
     get "/", PageController, :index
     get "/sampleCurrencyPage", PageController, :sampleCurrencyPage
+    get "/sampleExchangePage", PageController, :sampleExchangePage
   end
 
   # Other scopes may use custom stacks.

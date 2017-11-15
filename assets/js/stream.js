@@ -524,8 +524,12 @@ CCC.convertValueToDisplay =  function(symbol,value,type,fullNumbers){
 
 
 var streamUrl = "https://streamer.cryptocompare.com/";
-var fsym = document.getElementById('currencyAbbreviation').innerText;
+var currency = document.getElementById('currencyAbbreviation');
+if (currency) {
+  var fsym = currency.innerText;
+}
 var tsym = "USD";
+var exchange = document.getElementById('exchange').innerText;
 var currentSubs;
 var currentSubsText = "";
 var dataUrl = "https://min-api.cryptocompare.com/data/subs?fsym=" + fsym + "&tsyms=" + tsym;
@@ -533,9 +537,15 @@ var socket = io(streamUrl);
 
 $.getJSON(dataUrl, function(data) {
     //currentSubs = data['USD']['TRADES']['0~Bitstamp~BTC~USD'];
-    currentSubs = ["0~Bitstamp~" + fsym + "~USD", "0~BitTrex~" + fsym + "~USD",
-    "0~Coinbase~" + fsym + "~USD", "0~Bitfinex~" + fsym + "~USD",
-    "0~Gemini~" + fsym + "~USD", "0~Poloniex~" + fsym + "~USD"];
+    if (currency) {
+      currentSubs = ["0~Bitstamp~" + fsym + "~USD", "0~BitTrex~" + fsym + "~USD",
+      "0~Coinbase~" + fsym + "~USD", "0~Bitfinex~" + fsym + "~USD",
+      "0~Gemini~" + fsym + "~USD", "0~Poloniex~" + fsym + "~USD"];
+    }
+    else {
+      currentSubs = ["0~" + exchange + "~BTC~USD"];
+    }
+
     console.log(currentSubs);
     for (var i = 0; i < currentSubs.length; i++) {
         currentSubsText += currentSubs[i] + ", ";
