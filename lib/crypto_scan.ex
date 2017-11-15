@@ -35,6 +35,17 @@ defmodule CryptoScan do
     allExchanges
   end
 
+  def priceAllCurrencies(exchange) do
+    allCurrencies = [ %{ name: "Bitcoin", currencyPrice: priceFromExchange("BTC", exchange)},
+    %{ name: "Ethereum", currencyPrice: priceFromExchange("ETH", exchange)},
+    %{ name: "Bitcoin Cash", currencyPrice: priceFromExchange("BCH", exchange)},
+    %{ name: "Ethereum Classic", currencyPrice: priceFromExchange("ETC", exchange)},
+    %{ name: "Litecoin", currencyPrice: priceFromExchange("LTC", exchange)},
+    %{ name: "Zcash", currencyPrice: priceFromExchange("DASH", exchange)},
+    %{ name: exchange, currencyPrice: priceFromExchange("ZEC", exchange)}, ]
+    allCurrencies
+  end
+
   def priceConverter(currencyToConvert, convertedCurrency) do
     resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currencyToConvert <> "&tsyms=" <> convertedCurrency)
     data = Poison.decode!(resp.body)

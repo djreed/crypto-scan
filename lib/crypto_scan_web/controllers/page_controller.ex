@@ -13,6 +13,7 @@ defmodule CryptoScanWeb.PageController do
   end
 
   def sampleExchangePage(conn, _params) do
-    render(conn, "sampleExchangePage.html")
+    allPrices = CryptoScan.priceAllCurrencies("Coinbase")
+    render(conn, "sampleExchangePage.html", allPrices: allPrices)
   end
 end
