@@ -5,6 +5,12 @@
   </div>
   <div class="col-md-5">
     <h1 class="text-center">Followed Currencies</h1>
+
+    <%= for data <- @followsAndPrices do %>
+      <h4>Exchange: <%= data.exchange %> Currency: <%= data.currency %>
+          Price: <%= data.price %></h4>
+    <% end %>
+
   </div>
   <div class="col-md-5">
     <h1 class="text-center">Email Alerts</h1>
