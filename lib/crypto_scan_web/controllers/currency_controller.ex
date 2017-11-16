@@ -5,6 +5,7 @@ defmodule CryptoScanWeb.CurrencyController do
     price = CryptoScan.price(name)
     description = CryptoScan.description(CryptoScan.getID(name))
     allPrices = CryptoScan.priceAllExchanges(name)
+    fullName = CryptoScan.getFullName(name)
 
     follow = %CryptoScan.Connectors.Follow{
       user: "",
@@ -13,6 +14,6 @@ defmodule CryptoScanWeb.CurrencyController do
     }
     follow = CryptoScan.Connectors.change_follow(follow)
 
-    render(conn, "show.html", price: price, description: description, allPrices: allPrices, follow: follow)
+    render(conn, "show.html", price: price, description: description, allPrices: allPrices, follow: follow, name: name, fullName: fullName)
   end
 end

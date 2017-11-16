@@ -25,10 +25,44 @@ defmodule CryptoScan do
     data["USD"]
   end
 
+  def getFullName(name) do
+    cond do
+      name == "BTC" ->
+        fullName = "Bitcoin"
+      name == "ETH" ->
+        fullName = "Ethereum"
+      name == "BCH" ->
+        fullName = "Bitcoin Cash"
+      name == "ETC" ->
+        "Ethereum Cash"
+    end
+  #LTC DASH AND ZEC NEEDED
+    fullName
+  end
+
   def getID(name) do
     if name == "BTC" do
-      "1182"
+      id = "1182"
     end
+    if name == "ETH" do
+      id = "7605"
+    end
+    if name == "BCH" do
+      id = "202330"
+    end
+    if name == "ETC" do
+
+    end
+    if name == "LTC" do
+
+    end
+    if name == "DASH" do
+
+    end
+    if name == "ZEC" do
+
+    end
+    id
   end
 
   def priceAllExchanges(currency) do

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <h1>Bitcoin</h1>
+    <h1><%= @fullName %></h1>
     <div id="currencyAbbreviation" hidden>BTC</div>
     <h2>Current Aggregate USD Price: $<%= @price %></h2>
     <%= for price <- @allPrices do %>
@@ -13,7 +13,7 @@
     <% end %>
 
     <%= hidden_input :follow, :user_id, value: @current_user.id %>
-    <%= hidden_input :follow, :currency, value: "BTC" %>
+    <%= hidden_input :follow, :currency, value: @name %>
     <%= hidden_input :follow, :exchange, value: price.name %>
 
       <%= submit "Follow", class: "btn btn-primary" %>
@@ -30,7 +30,7 @@
     <div class="panel-group">
       <div class="panel panel-primary">
         <div class="panel-heading text-center">
-          <h4>BTC-USD Market Trades</h4>
+          <h4><%= @name %>-USD Market Trades</h4>
         </div>
         <div class="panel-body">
           <h6>
