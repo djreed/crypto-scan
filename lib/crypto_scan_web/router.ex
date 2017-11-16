@@ -1,5 +1,6 @@
 defmodule CryptoScanWeb.Router do
   use CryptoScanWeb, :router
+  import MicroblogWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,10 +8,13 @@ defmodule CryptoScanWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_user
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_user
   end
 
   scope "/", CryptoScanWeb do
@@ -21,6 +25,9 @@ defmodule CryptoScanWeb.Router do
     resources "/follows", FollowController
 
     resources "/alerts", AlertController
+
+    post "/sessions", SessionController, :login
+    delete "/sessions", SessionController, :logout
 
     get "/", PageController, :index
     get "/sampleCurrencyPage", PageController, :sampleCurrencyPage
