@@ -46,7 +46,8 @@ defmodule CryptoScan.Mixfile do
       {:distillery, "~> 1.4"},
       {:exnumerator, "~> 1.3.0"},
       {:httpoison, "~> 0.13"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:argon2_elixir, "~> 1.2"}
     ]
   end
 

@@ -37,7 +37,7 @@ defmodule CryptoScan.Accounts.User do
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes:
                                      %{password: password}} = changeset) do
-    change(changeset, Comeonin.Pbkdf2.add_hash(password))
+    change(changeset, Comeonin.Argon2.add_hash(password))
   end
   defp put_pass_hash(changeset), do: changeset
 
