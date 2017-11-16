@@ -25,6 +25,12 @@ defmodule CryptoScan do
     data["USD"]
   end
 
+  def getID(name) do
+    if name == "BTC" do
+      "1182"
+    end
+  end
+
   def priceAllExchanges(currency) do
     allExchanges = [ %{ name: "Bitstamp", exchangePrice: priceFromExchange(currency, "Bitstamp")},
     %{ name: "BitTrex", exchangePrice: priceFromExchange(currency, "BitTrex")},

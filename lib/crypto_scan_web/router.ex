@@ -30,7 +30,7 @@ defmodule CryptoScanWeb.Router do
     delete "/sessions", SessionController, :logout
 
     get "/", PageController, :index
-    get "/sampleCurrencyPage", PageController, :sampleCurrencyPage
+    get "/currency/:name", CurrencyController, :show
     get "/sampleExchangePage", PageController, :sampleExchangePage
   end
 

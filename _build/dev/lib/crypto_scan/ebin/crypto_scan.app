@@ -18,6 +18,8 @@
                         'Elixir.CryptoScan.Repo','Elixir.CryptoScanWeb',
                         'Elixir.CryptoScanWeb.AlertController',
                         'Elixir.CryptoScanWeb.AlertView',
+                        'Elixir.CryptoScanWeb.CurrencyController',
+                        'Elixir.CryptoScanWeb.CurrencyView',
                         'Elixir.CryptoScanWeb.Endpoint',
                         'Elixir.CryptoScanWeb.ErrorHelpers',
                         'Elixir.CryptoScanWeb.ErrorView',
