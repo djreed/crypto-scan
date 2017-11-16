@@ -36,13 +36,13 @@ defmodule CryptoScan do
   end
 
   def priceAllCurrencies(exchange) do
-    allCurrencies = [ %{ name: "Bitcoin", currencyPrice: priceFromExchange("BTC", exchange)},
-    %{ name: "Ethereum", currencyPrice: priceFromExchange("ETH", exchange)},
-    %{ name: "Bitcoin Cash", currencyPrice: priceFromExchange("BCH", exchange)},
-    %{ name: "Ethereum Classic", currencyPrice: priceFromExchange("ETC", exchange)},
-    %{ name: "Litecoin", currencyPrice: priceFromExchange("LTC", exchange)},
-    %{ name: "Zcash", currencyPrice: priceFromExchange("DASH", exchange)},
-    %{ name: exchange, currencyPrice: priceFromExchange("ZEC", exchange)}, ]
+    allCurrencies = [ %{ name: "Bitcoin", abb: "BTC", currencyPrice: priceFromExchange("BTC", exchange)},
+    %{ name: "Ethereum", abb: "ETH", currencyPrice: priceFromExchange("ETH", exchange)},
+    %{ name: "Bitcoin Cash", abb: "BCH", currencyPrice: priceFromExchange("BCH", exchange)},
+    %{ name: "Ethereum Classic", abb: "ETC", currencyPrice: priceFromExchange("ETC", exchange)},
+    %{ name: "Litecoin", abb: "LTC", currencyPrice: priceFromExchange("LTC", exchange)},
+    %{ name: "Zcash", abb: "DASH", currencyPrice: priceFromExchange("DASH", exchange)},
+    %{ name: exchange, abb: "ZEC", currencyPrice: priceFromExchange("ZEC", exchange)}, ]
     allCurrencies
   end
 

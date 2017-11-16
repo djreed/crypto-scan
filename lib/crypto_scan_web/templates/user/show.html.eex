@@ -8,7 +8,7 @@
 
     <%= for data <- @followsAndPrices do %>
       <h4>Exchange: <%= data.exchange %> Currency: <%= data.currency %>
-          Price: <%= data.price %></h4>
+          Price: <%= data.price %></h4d >
     <% end %>
 
   </div>

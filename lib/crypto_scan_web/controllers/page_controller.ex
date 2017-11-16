@@ -9,11 +9,27 @@ defmodule CryptoScanWeb.PageController do
     price = CryptoScan.price("BTC")
     description = CryptoScan.description("1182")
     allPrices = CryptoScan.priceAllExchanges("BTC")
-    render(conn, "sampleCurrencyPage.html", price: price, description: description, allPrices: allPrices)
+
+    follow = %CryptoScan.Connectors.Follow{
+      user: "",
+      currency: "",
+      exchange: "",
+    }
+    follow = CryptoScan.Connectors.change_follow(follow)
+
+    render(conn, "sampleCurrencyPage.html", price: price, description: description, allPrices: allPrices, follow: follow)
   end
 
   def sampleExchangePage(conn, _params) do
     allPrices = CryptoScan.priceAllCurrencies("Coinbase")
-    render(conn, "sampleExchangePage.html", allPrices: allPrices)
+
+    follow = %CryptoScan.Connectors.Follow{
+      user: "",
+      currency: "",
+      exchange: "",
+    }
+    follow = CryptoScan.Connectors.change_follow(follow)
+
+    render(conn, "sampleExchangePage.html", allPrices: allPrices, follow: follow)
   end
 end

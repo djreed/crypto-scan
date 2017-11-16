@@ -5,7 +5,24 @@
     <h2>Current Aggregate USD Price: $<%= @price %></h2>
     <%= for price <- @allPrices do %>
       <h3>Exchange: <%= price.name %> Price: $<%= price.exchangePrice %></h3>
+      <%= form_for @follow, follow_path(@conn, :create), [class: "form-inline"], fn f -> %>
+
+      <%= if @follow.action do %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+      <% end %>
+
+      <%= hidden_input :follow, :user_id, value: @current_user.id %>
+      <%= hidden_input :follow, :currency, value: "BTC" %>
+      <%= hidden_input :follow, :exchange, value: price.name %>
+
+        <%= submit "Follow", class: "btn btn-primary" %>
+
+      <% end %>
     <% end %>
+
+
     <h4>Description</h3>
     <p><%= raw @description %></p>
   </div>
