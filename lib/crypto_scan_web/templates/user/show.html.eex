@@ -1,18 +1,14 @@
-<h2>Show User</h2>
-
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </li>
-
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
-
-</ul>
+<div class="row">
+  <div class="col-md-2">
+    <h1><%= @user.name %><h1>
+    <h5><%= @user.email %><h2>
+  </div>
+  <div class="col-md-5">
+    <h1 class="text-center">Followed Currencies</h1>
+  </div>
+  <div class="col-md-5">
+    <h1 class="text-center">Email Alerts</h1>
+  </div>
+</div>
 
 <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>

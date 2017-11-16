@@ -9,6 +9,7 @@ defmodule CryptoScan.Accounts.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    has_many :follows, CryptoScan.Connectors.Follow, on_delete: :delete_all
 
     timestamps()
   end

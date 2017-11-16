@@ -5,7 +5,7 @@ defmodule CryptoScan.Connectors.Follow do
 
 
   schema "follows" do
-    field :user_id, :id
+    belongs_to :user, CryptoScan.Accounts.User
     field :currency, CryptoScan.Currency
     field :exchange, CryptoScan.Exchange
 
@@ -15,7 +15,7 @@ defmodule CryptoScan.Connectors.Follow do
   @doc false
   def changeset(%Follow{} = follow, attrs) do
     follow
-    |> cast(attrs, [:currency, :exchange])
-    |> validate_required([:currency, :exchange])
+    |> cast(attrs, [:currency, :exchange, :user_id])
+    |> validate_required([:currency, :exchange, :user_id])
   end
 end
