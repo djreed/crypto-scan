@@ -22,7 +22,11 @@ defmodule CryptoScan do
   def priceFromExchange(currency, exchange) do
     resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currency <> "&tsyms=USD&e=" <> exchange)
     data = Poison.decode!(resp.body)
-    data["USD"]
+    if data["Response"] == "Error" do
+      -1
+    else
+      data["USD"]
+    end
   end
 
   def getFullName(name) do
@@ -34,33 +38,33 @@ defmodule CryptoScan do
       name == "BCH" ->
         fullName = "Bitcoin Cash"
       name == "ETC" ->
-        "Ethereum Cash"
+        fullName = "Ethereum Classic"
+      name == "LTC" ->
+        fullName = "Litecoin"
+      name == "DASH" ->
+        fullName = "Dash"
+      name == "ZEC" ->
+        fullName = "Zcash"
     end
-  #LTC DASH AND ZEC NEEDED
     fullName
   end
 
   def getID(name) do
-    if name == "BTC" do
-      id = "1182"
-    end
-    if name == "ETH" do
-      id = "7605"
-    end
-    if name == "BCH" do
-      id = "202330"
-    end
-    if name == "ETC" do
-
-    end
-    if name == "LTC" do
-
-    end
-    if name == "DASH" do
-
-    end
-    if name == "ZEC" do
-
+    cond do
+      name == "BTC" ->
+        id = "1182"
+      name == "ETH" ->
+        id = "7605"
+      name == "BCH" ->
+        id = "202330"
+      name == "ETC" ->
+        id = "5324"
+      name == "LTC" ->
+        id = "3808"
+      name == "DASH" ->
+        id = "3807"
+      name == "ZEC" ->
+        id = "24854"
     end
     id
   end
@@ -72,7 +76,14 @@ defmodule CryptoScan do
     %{ name: "Bitfinex", exchangePrice: priceFromExchange(currency, "Bitfinex")},
     %{ name: "Gemini", exchangePrice: priceFromExchange(currency, "Gemini")},
     %{ name: "Poloniex", exchangePrice: priceFromExchange(currency, "Poloniex")} ]
-    allExchanges
+
+    data = for exchange <- allExchanges do
+      if exchange.exchangePrice != -1 do
+        exchange
+      end
+    end
+    
+    data
   end
 
   def priceAllCurrencies(exchange) do
