@@ -7,6 +7,8 @@ defmodule CryptoScan do
   if it comes from the database, an external API or others.
   """
 
+  alias CryptoScan.Currency
+
   def coin_list do
     resp = HTTPoison.get!("https://www.cryptocompare.com/api/data/coinlist/")
     data = Poison.decode!(resp.body)
@@ -31,19 +33,19 @@ defmodule CryptoScan do
 
   def getFullName(name) do
     cond do
-      name == "BTC" ->
+      name == Enum.at(Currency.values, 0) ->
         fullName = "Bitcoin"
-      name == "ETH" ->
+      name == Enum.at(Currency.values, 1) ->
         fullName = "Ethereum"
-      name == "BCH" ->
+      name == Enum.at(Currency.values, 2) ->
         fullName = "Bitcoin Cash"
-      name == "ETC" ->
+      name == Enum.at(Currency.values, 3) ->
         fullName = "Ethereum Classic"
-      name == "LTC" ->
+      name == Enum.at(Currency.values, 4) ->
         fullName = "Litecoin"
-      name == "DASH" ->
+      name == Enum.at(Currency.values, 5) ->
         fullName = "Dash"
-      name == "ZEC" ->
+      name == Enum.at(Currency.values, 6) ->
         fullName = "Zcash"
     end
     fullName
@@ -51,31 +53,33 @@ defmodule CryptoScan do
 
   def getID(name) do
     cond do
-      name == "BTC" ->
+      name == Enum.at(Currency.values, 0) ->
         id = "1182"
-      name == "ETH" ->
+      name == Enum.at(Currency.values, 1) ->
         id = "7605"
-      name == "BCH" ->
+      name == Enum.at(Currency.values, 2) ->
         id = "202330"
-      name == "ETC" ->
+      name == Enum.at(Currency.values, 3) ->
         id = "5324"
-      name == "LTC" ->
+      name == Enum.at(Currency.values, 4) ->
         id = "3808"
-      name == "DASH" ->
+      name == Enum.at(Currency.values, 5) ->
         id = "3807"
-      name == "ZEC" ->
+      name == Enum.at(Currency.values, 6) ->
         id = "24854"
     end
     id
   end
 
   def priceAllExchanges(currency) do
-    allExchanges = [ %{ name: "Bitstamp", exchangePrice: priceFromExchange(currency, "Bitstamp")},
-    %{ name: "BitTrex", exchangePrice: priceFromExchange(currency, "BitTrex")},
-    %{ name: "Coinbase", exchangePrice: priceFromExchange(currency, "Coinbase")},
-    %{ name: "Bitfinex", exchangePrice: priceFromExchange(currency, "Bitfinex")},
-    %{ name: "Gemini", exchangePrice: priceFromExchange(currency, "Gemini")},
-    %{ name: "Poloniex", exchangePrice: priceFromExchange(currency, "Poloniex")} ]
+    allExchanges = [
+      %{ name: "Bitstamp", exchangePrice: priceFromExchange(currency, "Bitstamp")},
+      %{ name: "BitTrex", exchangePrice: priceFromExchange(currency, "BitTrex")},
+      %{ name: "Coinbase", exchangePrice: priceFromExchange(currency, "Coinbase")},
+      %{ name: "Bitfinex", exchangePrice: priceFromExchange(currency, "Bitfinex")},
+      %{ name: "Gemini", exchangePrice: priceFromExchange(currency, "Gemini")},
+      %{ name: "Poloniex", exchangePrice: priceFromExchange(currency, "Poloniex")}
+    ]
 
     data = for exchange <- allExchanges do
       if exchange.exchangePrice != -1 do
@@ -87,13 +91,43 @@ defmodule CryptoScan do
   end
 
   def priceAllCurrencies(exchange) do
-    allCurrencies = [ %{ name: "Bitcoin", abb: "BTC", currencyPrice: priceFromExchange("BTC", exchange)},
-    %{ name: "Ethereum", abb: "ETH", currencyPrice: priceFromExchange("ETH", exchange)},
-    %{ name: "Bitcoin Cash", abb: "BCH", currencyPrice: priceFromExchange("BCH", exchange)},
-    %{ name: "Ethereum Classic", abb: "ETC", currencyPrice: priceFromExchange("ETC", exchange)},
-    %{ name: "Litecoin", abb: "LTC", currencyPrice: priceFromExchange("LTC", exchange)},
-    %{ name: "Dash", abb: "DASH", currencyPrice: priceFromExchange("DASH", exchange)},
-    %{ name: "Zcash", abb: "ZEC", currencyPrice: priceFromExchange("ZEC", exchange)}, ]
+    allCurrencies = [
+      %{
+        name: "Bitcoin",
+        abb: "BTC",
+        currencyPrice: priceFromExchange("BTC", exchange)
+      },
+      %{
+        name: "Ethereum",
+        abb: "ETH",
+        currencyPrice: priceFromExchange("ETH", exchange)
+      },
+      %{
+        name: "Bitcoin Cash",
+        abb: "BCH",
+        currencyPrice: priceFromExchange("BCH", exchange)
+      },
+      %{
+        name: "Ethereum Classic",
+        abb: "ETC",
+        currencyPrice: priceFromExchange("ETC", exchange)
+      },
+      %{
+        name: "Litecoin",
+        abb: "LTC",
+        currencyPrice: priceFromExchange("LTC", exchange)
+      },
+      %{
+        name: "Dash",
+        abb: "DASH",
+        currencyPrice: priceFromExchange("DASH", exchange)
+      },
+      %{
+        name: "Zcash",
+        abb: "ZEC",
+        currencyPrice: priceFromExchange("ZEC", exchange)
+      },
+    ]
 
     data = for currency <- allCurrencies do
       if currency.currencyPrice != -1 do
