@@ -1,3 +1,7 @@
+////////////////////////////
+/*   STREAM UTILITIES     */
+////////////////////////////
+
 var CCC = CCC || {};
 
 CCC.STATIC=CCC.STATIC || {};
@@ -474,54 +478,9 @@ CCC.convertValueToDisplay =  function(symbol,value,type,fullNumbers){
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+////////////////////////////
+/*   STREAM JAVASCRIPT    */
+////////////////////////////
 
 var streamUrl = "https://streamer.cryptocompare.com/";
 var currency = document.getElementById('currencyAbbreviation');
