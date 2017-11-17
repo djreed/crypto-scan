@@ -1726,6 +1726,10 @@ exports.default = socket;
 require.register("js/stream.js", function(exports, require, module) {
 'use strict';
 
+////////////////////////////
+/*   STREAM UTILITIES     */
+////////////////////////////
+
 var CCC = CCC || {};
 
 CCC.STATIC = CCC.STATIC || {};
@@ -2207,6 +2211,10 @@ CCC.convertValueToDisplay = function (symbol, value, type, fullNumbers) {
     return prefix + CCC.noExponents((valueSign * valueAbs).toPrecision(decimalsOnSmallNumbers));
   }
 };
+
+////////////////////////////
+/*   STREAM JAVASCRIPT    */
+////////////////////////////
 
 var streamUrl = "https://streamer.cryptocompare.com/";
 var currency = document.getElementById('currencyAbbreviation');

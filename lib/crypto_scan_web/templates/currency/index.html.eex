@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="text-center">Currencies</h1>
+    <div>
+        <h2><a href="currency/BTC">Bitcoin</a></h2>
+        <h2><a href="currency/ETH">Ethereum</a></h2>
+        <h2><a href="currency/BCH">Bitcoin Cash</a></h2>
+        <h2><a href="currency/ETC">Ethereum Classic</a></h2>
+        <h2><a href="currency/LTC">Litecoin</a></h2>
+        <h2><a href="currency/DASH">Dash</a></h2>
+        <h2><a href="currency/ZEC">Zcash</a></h2>
+      </div>
+  </div>
+</div>

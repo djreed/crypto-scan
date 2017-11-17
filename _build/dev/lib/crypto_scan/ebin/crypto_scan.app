@@ -1,6 +1,6 @@
 {application,crypto_scan,
              [{applications,[kernel,stdlib,elixir,logger,runtime_tools,
-                             exnumerator,gettext,poison,argon2_elixir,
+                             exnumerator,socket,gettext,poison,argon2_elixir,
                              comeonin,httpoison,phoenix_pubsub,cowboy,
                              phoenix_html,phoenix,phoenix_live_reload,
                              postgrex,distillery,phoenix_ecto]},

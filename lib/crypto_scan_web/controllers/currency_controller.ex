@@ -16,4 +16,8 @@ defmodule CryptoScanWeb.CurrencyController do
 
     render(conn, "show.html", price: price, description: description, allPrices: allPrices, follow: follow, name: name, fullName: fullName)
   end
+
+  def index(conn, _params) do
+    render(conn, "index.html")
+  end
 end

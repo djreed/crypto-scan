@@ -6,16 +6,17 @@
   <div class="col-md-7">
     <h1 class="text-center">Followed Currencies</h1>
 
-    <%= for data <- @followsAndPrices do %>
+    <%= for follow <- @user.follows do %>
       <div class="row">
         <div class="col-md-4">
-          <h4>Exchange: <%= data.exchange %></h4>
+          <span><%= link "Delete", to: follow_path(@conn, :delete, follow), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+          <h4>Exchange: <%= follow.exchange %></h4>
         </div>
         <div class="col-md-4">
-          <h4>Currency: <%= data.currency %></h4>
+          <h4>Currency: <%= follow.currency %></h4>
         </div>
         <div class="col-md-4">
-          <h4>Price: <%= data.price %></h4>
+          <h4>Price: </h4>
         </div>
       </div>
     <% end %>

@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="text-center">Exchanges</h1>
+    <div>
+        <h2><a href="exchange/Bitstamp">Bitstamp</a></h2>
+        <h2><a href="exchange/BitTrex">BitTrex</a></h2>
+        <h2><a href="exchange/Coinbase">Coinbase</a></h2>
+        <h2><a href="exchange/Bitfinex">Bitfinex</a></h2>
+        <h2><a href="exchange/Gemini">Gemini</a></h2>
+        <h2><a href="exchange/Poloniex">Poloniex</a></h2>
+      </div>
+  </div>
+</div>

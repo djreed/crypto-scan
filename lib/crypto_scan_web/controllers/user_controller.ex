@@ -29,13 +29,11 @@ defmodule CryptoScanWeb.UserController do
     user = Accounts.get_user!(id)
     user = CryptoScan.Repo.preload(user, :follows)
 
-    followsAndPrices = for follow <- user.follows do
-      %{ :exchange => follow.exchange,
-         :currency => follow.currency,
-         :price => CryptoScan.priceFromExchange(follow.currency, follow.exchange) }
+    prices = for follow <- user.follows do
+      CryptoScan.priceFromExchange(follow.currency, follow.exchange)
     end
 
-    render(conn, "show.html", user: user, followsAndPrices: followsAndPrices)
+    render(conn, "show.html", user: user, prices: prices)
   end
 
   def edit(conn, %{"id" => id}) do
