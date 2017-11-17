@@ -82,7 +82,7 @@ defmodule CryptoScan do
         exchange
       end
     end
-    
+
     data
   end
 
@@ -92,9 +92,16 @@ defmodule CryptoScan do
     %{ name: "Bitcoin Cash", abb: "BCH", currencyPrice: priceFromExchange("BCH", exchange)},
     %{ name: "Ethereum Classic", abb: "ETC", currencyPrice: priceFromExchange("ETC", exchange)},
     %{ name: "Litecoin", abb: "LTC", currencyPrice: priceFromExchange("LTC", exchange)},
-    %{ name: "Zcash", abb: "DASH", currencyPrice: priceFromExchange("DASH", exchange)},
-    %{ name: exchange, abb: "ZEC", currencyPrice: priceFromExchange("ZEC", exchange)}, ]
-    allCurrencies
+    %{ name: "Dash", abb: "DASH", currencyPrice: priceFromExchange("DASH", exchange)},
+    %{ name: "Zcash", abb: "ZEC", currencyPrice: priceFromExchange("ZEC", exchange)}, ]
+
+    data = for currency <- allCurrencies do
+      if currency.currencyPrice != -1 do
+        currency
+      end
+    end
+
+    data
   end
 
   def priceConverter(currencyToConvert, convertedCurrency) do

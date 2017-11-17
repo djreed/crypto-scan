@@ -23,6 +23,8 @@
                         'Elixir.CryptoScanWeb.Endpoint',
                         'Elixir.CryptoScanWeb.ErrorHelpers',
                         'Elixir.CryptoScanWeb.ErrorView',
+                        'Elixir.CryptoScanWeb.ExchangeController',
+                        'Elixir.CryptoScanWeb.ExchangeView',
                         'Elixir.CryptoScanWeb.FollowController',
                         'Elixir.CryptoScanWeb.FollowView',
                         'Elixir.CryptoScanWeb.Gettext',
