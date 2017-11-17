@@ -27,5 +27,3 @@ npm-debug.log
 /config/*.secret.exs
 
 *.tar.gz*
-
-/_build
