@@ -28,4 +28,4 @@ npm-debug.log
 
 *.tar.gz*
 
-/_build/
+/_build
