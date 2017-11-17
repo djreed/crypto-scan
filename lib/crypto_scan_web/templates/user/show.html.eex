@@ -3,16 +3,25 @@
     <h1><%= @user.name %><h1>
     <h5><%= @user.email %><h2>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-7">
     <h1 class="text-center">Followed Currencies</h1>
 
     <%= for data <- @followsAndPrices do %>
-      <h4>Exchange: <%= data.exchange %> Currency: <%= data.currency %>
-          Price: <%= data.price %></h4d >
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Exchange: <%= data.exchange %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Currency: <%= data.currency %></h4>
+        </div>
+        <div class="col-md-4">
+          <h4>Price: <%= data.price %></h4>
+        </div>
+      </div>
     <% end %>
 
   </div>
-  <div class="col-md-5">
+  <div class="col-md-3">
     <h1 class="text-center">Email Alerts</h1>
   </div>
 </div>
