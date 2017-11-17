@@ -42,7 +42,6 @@ defmodule CryptoScan.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:pbkdf2_elixir, "~> 0.12"},
       {:distillery, "~> 1.4"},
       {:exnumerator, "~> 1.3.0"},
       {:httpoison, "~> 0.13"},

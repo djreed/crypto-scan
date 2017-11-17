@@ -2,7 +2,7 @@ defmodule CryptoScan.Exchange do
   use Exnumerator,
     values: [
       "Bitstamp",
-      "Bittrex",
+      "BitTrex",
       "Coinbase",
       "Bitfinex",
       "Gemini",

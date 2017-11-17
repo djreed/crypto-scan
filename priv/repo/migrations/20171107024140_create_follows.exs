@@ -3,9 +3,9 @@ defmodule CryptoScan.Repo.Migrations.CreateFollows do
 
   def change do
     create table(:follows) do
-      add :currency, :string
-      add :exchange, :string
-      add :user_id, references(:users, on_delete: :nothing)
+      add :user_id, references(:users, on_delete: :delete_all), null: false
+      add :currency, :string, null: false
+      add :exchange, :string, null: true
 
       timestamps()
     end

@@ -10,6 +10,9 @@ defmodule CryptoScan.Feedback.Alert do
     field :comparator, :string
     field :currency, CryptoScan.Currency
     field :exchange, CryptoScan.Exchange
+
+    field :fired, :boolean
+
     timestamps()
   end
 

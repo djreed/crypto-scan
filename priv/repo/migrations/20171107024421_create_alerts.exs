@@ -3,11 +3,13 @@ defmodule CryptoScan.Repo.Migrations.CreateAlerts do
 
   def change do
     create table(:alerts) do
-      add :currency, :string
-      add :exchange, :string
+      add :user_id, references(:users, on_delete: :delete_all), null: false
+      add :currency, :string, null: false
+      add :exchange, :string, null: false
       add :comparator, :string
       add :breakpoint, :decimal
-      add :user_id, references(:users, on_delete: :nothing)
+
+      add :fired, :boolean, null: false, default: false
 
       timestamps()
     end
