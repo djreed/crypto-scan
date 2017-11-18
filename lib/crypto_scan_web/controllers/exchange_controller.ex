@@ -19,4 +19,8 @@ defmodule CryptoScanWeb.ExchangeController do
 
     render(conn, "show.html", allPrices: allPrices, follow: follow, name: name)
   end
+
+  def index(conn, _params) do
+    render(conn, "index.html")
+  end
 end

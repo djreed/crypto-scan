@@ -32,11 +32,10 @@ defmodule CryptoScanWeb.Router do
     get "/", PageController, :index
 
     get "/currency/:name", CurrencyController, :show
-    get "/currency/", CurrencyController, :index
+    get "/currency", CurrencyController, :index
 
     get "/exchange/:name", ExchangeController, :show
-    get "/exchange/", ExchangeController, :index
-
+    get "/exchange", ExchangeController, :index
   end
 
   # Other scopes may use custom stacks.
