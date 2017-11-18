@@ -19,7 +19,7 @@ defmodule CryptoScan.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {CryptoScan.Application, []},
+      mod: {CryptoScan.Application, [:bamboo]},
       extra_applications: [:logger, :runtime_tools, :exnumerator]
     ]
   end
@@ -48,7 +48,8 @@ defmodule CryptoScan.Mixfile do
       {:poison, "~> 3.1"},
       {:argon2_elixir, "~> 1.2"},
       {:quantum, ">= 2.2.0"},
-      {:timex, "~> 3.0"}
+      {:timex, "~> 3.0"},
+      {:bamboo, "~> 0.8"}
     ]
   end
 

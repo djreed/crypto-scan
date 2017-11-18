@@ -22,6 +22,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :crypto_scan, EmailAlert.Mailer,
+  adapter: Bamboo.SendgridAdapter,
+  api_key: "SG.t8UCjqnuRiinZRqH33hrDg.eZynmb_yu7bL2Salmrh0mlmnRhUUwg_W_yiGgd8gCbQ"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

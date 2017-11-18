@@ -19,7 +19,7 @@ defmodule CryptoScan.Feedback.Alert do
   @doc false
   def changeset(%Alert{} = alert, attrs) do
     alert
-    |> cast(attrs, [:currency, :exchange, :comparator, :breakpoint])
-    |> validate_required([:currency, :exchange, :comparator, :breakpoint])
+    |> cast(attrs, [:currency, :exchange, :comparator, :breakpoint, :fired, :user_id])
+    |> validate_required([:currency, :exchange, :comparator, :breakpoint, :fired, :user_id])
   end
 end

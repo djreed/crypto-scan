@@ -29,6 +29,9 @@
     <%= error_tag f, :breakpoint %>
   </div>
 
+  <%= hidden_input f, :user_id, value: @current_user.id %>
+  <%= hidden_input f, :fired, value: "false" %>
+
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>

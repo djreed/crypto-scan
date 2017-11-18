@@ -28,6 +28,7 @@ defmodule CryptoScanWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     user = CryptoScan.Repo.preload(user, :follows)
+    CryptoScan.Feedback.crossThreshold
 
     prices = for follow <- user.follows do
       CryptoScan.priceFromExchange(follow.currency, follow.exchange)
