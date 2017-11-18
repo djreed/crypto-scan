@@ -10,8 +10,8 @@ defmodule CryptoScanWeb.CurrencyController do
       %{
         fullName: CryptoScan.getFullName(c),
         abr: c,
-        price: CryptoScan.price(c),
-        description: CryptoScan.description(CryptoScan.getID(c))
+        #price: CryptoScan.price(c),
+        #description: CryptoScan.description(CryptoScan.getID(c))
       }
     end
 
@@ -19,10 +19,16 @@ defmodule CryptoScanWeb.CurrencyController do
   end
 
   def show(conn, %{"name" => name}) do
+    if !Enum.member? CryptoScan.Currency.values, name do
+      conn
+      |> put_flash(:error, "Currency abbreviation '" <> name <> "' does not exist.")
+      |> redirect(to: currency_path(conn, :index))
+    end
+
+    fullName = CryptoScan.getFullName(name)
     price = CryptoScan.price(name)
     description = CryptoScan.description(CryptoScan.getID(name))
     allPrices = CryptoScan.priceAllExchanges(name)
-    fullName = CryptoScan.getFullName(name)
 
     follow = %Connectors.Follow{
       user: "",
@@ -32,15 +38,12 @@ defmodule CryptoScanWeb.CurrencyController do
     follow = Connectors.change_follow(follow)
 
     render(conn, "show.html",
+      name: name,
+      fullName: fullName,
       price: price,
       description: description,
       allPrices: allPrices,
-      follow: follow,
-      name: name,
-      fullName: fullName)
-  end
-
-  def index(conn, _params) do
-    render(conn, "index.html")
+      follow: follow
+    )
   end
 end

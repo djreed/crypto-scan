@@ -8,6 +8,12 @@ defmodule CryptoScanWeb.ExchangeController do
   end
 
   def show(conn, %{"name" => name}) do
+    if !Enum.member? CryptoScan.Exchange.values, name do
+      conn
+      |> put_flash(:error, "Exchange '" <> name <> "' does not exist.")
+      |> redirect(to: exchange_path(conn, :index))
+    end
+
     allPrices = CryptoScan.priceAllCurrencies(name)
 
     follow = %CryptoScan.Connectors.Follow{
@@ -18,9 +24,5 @@ defmodule CryptoScanWeb.ExchangeController do
     follow = CryptoScan.Connectors.change_follow(follow)
 
     render(conn, "show.html", allPrices: allPrices, follow: follow, name: name)
-  end
-
-  def index(conn, _params) do
-    render(conn, "index.html")
   end
 end

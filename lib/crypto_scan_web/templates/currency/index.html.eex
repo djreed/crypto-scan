@@ -1,17 +1,19 @@
+<div id="CURRENT_PRICING" hidden></div>
 <div class="card-deck">
     <%= for currency <- @currencies do %>
         <div class="m-2">
-            <div class="card">
-                <div class="card-header">
-                    <h6><%= currency.fullName %></h6>
-                    <span><%= currency.abr %></span>
-                </div>
-                <div class="card-body">
-                    <p>$<%= currency.price %></p>
-                    <!-- <p> <%= raw currency.description %></p>-->
-                    <%= link("View", to: currency_path(@conn, :show, currency.abr),
-                        class: "btn btn-sm") %>
-                </div>
+            <div class="card card-body">
+                <h2 class="text-center"><%= currency.fullName %></h2>
+                <h5 class="price-display"><%= currency.abr %> - USD
+                    <span class="price" id="PRICE_<%= currency.abr %>">
+                    </span>
+                </h2>
+	        <h5>24h Change:
+                    <span id="CHANGE24HOUR_<%= currency.abr %>"></span>
+                    <span id="CHANGE24HOURPCT_<%= currency.abr %>"></span><br>
+                </h5>
+                <%= link("View", to: currency_path(@conn, :show, currency.abr),
+                    class: "btn btn-primary btn-sm") %>
             </div>
         </div>
     <% end %>

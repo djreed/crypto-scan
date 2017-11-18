@@ -20,11 +20,11 @@ defmodule CryptoScanWeb.Router do
   scope "/", CryptoScanWeb do
     pipe_through :browser # Use the default browser stack
 
-    resources "/users", UserController
+    resources "/users", UserController, except: [:index]
 
-    resources "/follows", FollowController
+    resources "/follows", FollowController, except: [:show, :index]
 
-    resources "/alerts", AlertController
+    resources "/alerts", AlertController, except: [:index]
 
     post "/sessions", SessionController, :login
     delete "/sessions", SessionController, :logout

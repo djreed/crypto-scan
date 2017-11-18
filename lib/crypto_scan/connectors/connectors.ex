@@ -35,7 +35,10 @@ defmodule CryptoScan.Connectors do
       ** (Ecto.NoResultsError)
 
   """
-  def get_follow!(id), do: Repo.get!(Follow, id)
+  def get_follow!(id) do
+    Repo.get!(Follow, id)
+    |> Repo.preload(:user)
+  end
 
   @doc """
   Creates a follow.

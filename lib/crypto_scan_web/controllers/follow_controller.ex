@@ -19,15 +19,10 @@ defmodule CryptoScanWeb.FollowController do
       {:ok, follow} ->
         conn
         |> put_flash(:info, "Follow created successfully.")
-        |> redirect(to: follow_path(conn, :show, follow))
+        |> redirect(to: currency_path(conn, :show, follow.currency))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
-  end
-
-  def show(conn, %{"id" => id}) do
-    follow = Connectors.get_follow!(id)
-    render(conn, "show.html", follow: follow)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -51,10 +46,11 @@ defmodule CryptoScanWeb.FollowController do
 
   def delete(conn, %{"id" => id}) do
     follow = Connectors.get_follow!(id)
+
     {:ok, _follow} = Connectors.delete_follow(follow)
 
     conn
     |> put_flash(:info, "Follow deleted successfully.")
-    |> redirect(to: follow_path(conn, :index))
+    |> redirect(to: user_path(conn, :show, follow.user))
   end
 end

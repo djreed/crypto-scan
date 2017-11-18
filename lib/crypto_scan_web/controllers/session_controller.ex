@@ -28,7 +28,7 @@ defmodule CryptoScanWeb.SessionController do
       conn
       |> put_session(:user_id, nil)
       |> put_flash(:error, "Bad email/password")
-      |> redirect(to: user_path(conn, :index))
+      |> redirect(to: "/")
     end
   end
 
@@ -36,6 +36,6 @@ defmodule CryptoScanWeb.SessionController do
     conn
     |> put_session(:user_id, nil)
     |> put_flash(:info, "Logged out")
-    |> redirect(to: user_path(conn, :index))
+    |> redirect(to: "/")
   end
 end
