@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :crypto_scan, CryptoScanWeb.Endpoint,
-  http: [port: 21420],
+  http: [port: 4001],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
