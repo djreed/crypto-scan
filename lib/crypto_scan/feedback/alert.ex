@@ -7,7 +7,7 @@ defmodule CryptoScan.Feedback.Alert do
   schema "alerts" do
     field :user_id, :id
     field :breakpoint, :decimal
-    field :comparator, :string
+    field :comparator, CryptoScan.Comparator
     field :currency, CryptoScan.Currency
     field :exchange, CryptoScan.Exchange
 

@@ -21,3 +21,4 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import stream from "./stream"
+import stream2 from "./stream2"
