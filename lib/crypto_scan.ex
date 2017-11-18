@@ -16,13 +16,18 @@ defmodule CryptoScan do
   end
 
   def price(currency) do
-    resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currency <> "&tsyms=USD")
+    resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym="
+      <> currency
+      <> "&tsyms=USD")
     data = Poison.decode!(resp.body)
     data["USD"]
   end
 
   def priceFromExchange(currency, exchange) do
-    resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currency <> "&tsyms=USD&e=" <> exchange)
+    resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym="
+      <> currency
+      <> "&tsyms=USD&e="
+      <> exchange)
     data = Poison.decode!(resp.body)
     if data["Response"] == "Error" do
       -1
@@ -73,12 +78,24 @@ defmodule CryptoScan do
 
   def priceAllExchanges(currency) do
     allExchanges = [
-      %{ name: "Bitstamp", exchangePrice: priceFromExchange(currency, "Bitstamp")},
-      %{ name: "BitTrex", exchangePrice: priceFromExchange(currency, "BitTrex")},
-      %{ name: "Coinbase", exchangePrice: priceFromExchange(currency, "Coinbase")},
-      %{ name: "Bitfinex", exchangePrice: priceFromExchange(currency, "Bitfinex")},
-      %{ name: "Gemini", exchangePrice: priceFromExchange(currency, "Gemini")},
-      %{ name: "Poloniex", exchangePrice: priceFromExchange(currency, "Poloniex")}
+      %{ name: "Bitstamp",
+         currency: currency,
+         exchangePrice: priceFromExchange(currency, "Bitstamp")},
+      %{ name: "BitTrex",
+         currency: currency,
+         exchangePrice: priceFromExchange(currency, "BitTrex")},
+      %{ name: "Coinbase",
+         currency: currency, exchangePrice:
+         priceFromExchange(currency, "Coinbase")},
+      %{ name: "Bitfinex",
+         currency: currency,
+         exchangePrice: priceFromExchange(currency, "Bitfinex")},
+      %{ name: "Gemini",
+         currency: currency,
+         exchangePrice: priceFromExchange(currency, "Gemini")},
+      %{ name: "Poloniex",
+         currency: currency,
+         exchangePrice: priceFromExchange(currency, "Poloniex")}
     ]
 
     data = for exchange <- allExchanges do

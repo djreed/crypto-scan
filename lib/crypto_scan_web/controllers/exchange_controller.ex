@@ -1,6 +1,12 @@
 defmodule CryptoScanWeb.ExchangeController do
   use CryptoScanWeb, :controller
 
+  def index(conn, _params) do
+    exchanges = CryptoScan.Exchange.values
+
+    render(conn, "index.html", exchanges: exchanges)
+  end
+
   def show(conn, %{"name" => name}) do
     allPrices = CryptoScan.priceAllCurrencies(name)
 

@@ -18,14 +18,16 @@
         <%= hidden_input :follow, :exchange, value: price.name %>
 
           <%= submit "Follow", class: "btn btn-primary" %>
-          <h3><%= price.name %> Price: <span id="<%= price.name %>-price">$<%= price.exchangePrice %></span></h3>
+          <h3><%= price.name %> Price:
+            <span id="<%= price.name %>-<%= price.currency %>-AGG">
+              $<%= price.exchangePrice %></span></h3>
         <% end %>
       <% end %>
     <% end %>
 
 
     <h4>Description</h3>
-    <p><%= raw @description %></p>
+        <p><%= raw @description %></p>
   </div>
   <div class="col-md-6">
     <div class="panel-group">

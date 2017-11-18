@@ -1,0 +1,6 @@
+<%= for exchange <- @exchanges do %>
+    <div class="card card-body">
+            <h4><%= exchange %></h4>
+    </div>
+<% end %>
+

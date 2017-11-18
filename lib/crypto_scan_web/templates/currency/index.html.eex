@@ -1,0 +1,18 @@
+<div class="card-deck">
+    <%= for currency <- @currencies do %>
+        <div class="m-2">
+            <div class="card">
+                <div class="card-header">
+                    <h6><%= currency.fullName %></h6>
+                    <span><%= currency.abr %></span>
+                </div>
+                <div class="card-body">
+                    <p>$<%= currency.price %></p>
+                    <!-- <p> <%= raw currency.description %></p>-->
+                    <%= link("View", to: currency_path(@conn, :show, currency.abr),
+                        class: "btn btn-sm") %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

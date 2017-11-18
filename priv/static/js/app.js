@@ -1726,6 +1726,10 @@ exports.default = socket;
 require.register("js/stream.js", function(exports, require, module) {
 'use strict';
 
+////////////////////////////
+/*   STREAM UTILITIES     */
+////////////////////////////
+
 var CCC = CCC || {};
 
 CCC.STATIC = CCC.STATIC || {};
@@ -2208,6 +2212,10 @@ CCC.convertValueToDisplay = function (symbol, value, type, fullNumbers) {
   }
 };
 
+////////////////////////////
+/*   STREAM JAVASCRIPT    */
+////////////////////////////
+
 var streamUrl = "https://streamer.cryptocompare.com/";
 var currency = document.getElementById('currencyAbbreviation');
 if (currency) {
@@ -2227,7 +2235,7 @@ $.getJSON(dataUrl, function (data) {
   if (currency) {
     currentSubs = ["0~Bitstamp~" + fsym + "~USD", "0~BitTrex~" + fsym + "~USD", "0~Coinbase~" + fsym + "~USD", "0~Bitfinex~" + fsym + "~USD", "0~Gemini~" + fsym + "~USD", "0~Poloniex~" + fsym + "~USD"];
   } else {
-    currentSubs = ["0~" + exchange + "~BTC~USD"];
+    currentSubs = ["0~" + exchange + "~BTC~USD", "0~" + exchange + "~ETH~USD", "0~" + exchange + "~BCH~USD", "0~" + exchange + "~ETC~USD", "0~" + exchange + "~LTC~USD", "0~" + exchange + "~DASH~USD", "0~" + exchange + "~ZEC~USD"];
   }
 
   console.log(currentSubs);

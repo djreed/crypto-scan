@@ -27,7 +27,7 @@
       </button>
 
       <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
+        <ul class="nav navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">
               Home
@@ -39,17 +39,13 @@
               Profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Exchanges
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Currencies
-            </a>
-          </li>
+
+          <%= link("Currencies", to: currency_path(@conn, :index),
+              class: "nav-link") %>
+          <%= link("Exchanges", to: exchange_path(@conn, :index),
+              class: "nav-link") %>
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" placeholder="Search" type="text">
           <button class="btn btn-secondary my-2 my-sm-0" type="submit">

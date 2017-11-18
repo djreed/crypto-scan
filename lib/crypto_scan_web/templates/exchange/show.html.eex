@@ -48,12 +48,14 @@
               <a class="btn btn-danger btn-lg" id="unsubscribe">Stop</a>
             </div>
           </row>
-          <div class="row">
-            <div class="col-md-12">
-              <h6>Currently streaming from:</h6>
-              <i id="sub-exchanges"></i>
-            </div>
-          </div>
+<!-->
+<div class="row">
+  <div class="col-md-12">
+    <h6>Currently streaming from:</h6>
+    <i id="sub-exchanges"></i>
+  </div>
+</div>
+-->
           <table class="table">
             <thead>
               <tr>
