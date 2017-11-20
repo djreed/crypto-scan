@@ -151,14 +151,11 @@ defmodule CryptoScan do
         currency
       end
     end
-
-    data
   end
 
   def priceConverter(currencyToConvert, convertedCurrency) do
     resp = HTTPoison.get!("https://min-api.cryptocompare.com/data/price?fsym=" <> currencyToConvert <> "&tsyms=" <> convertedCurrency)
     data = Poison.decode!(resp.body)
-    data
   end
 
   def description(id) do
