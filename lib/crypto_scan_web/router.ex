@@ -1,6 +1,6 @@
 defmodule CryptoScanWeb.Router do
   use CryptoScanWeb, :router
-  import MicroblogWeb.Plugs
+  import CryptoScanWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
