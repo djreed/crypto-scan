@@ -14,7 +14,9 @@
 
   <body class="mb-4">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Crypto-Scan</a>
+      <a class="navbar-brand" href="/">
+          Crypto-Scan
+      </a>
       <button class="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -49,10 +51,17 @@
       </div>
 
       <%= if @current_user do %>
-          <span class="text-light">
-              <%= @current_user.email %> |
-              <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-          </span>
+          <h3 class="">
+              <%= @current_user.email %> | 
+              <span>
+                  <%= link("Logout", to: session_path(@conn, :logout),
+                      method: :delete, class: "btn btn-secondary btn-sm") %>
+              </span>
+              <span>
+                  <%= link("Edit", to: user_path(@conn, :edit, @current_user),
+                      class: "btn btn-secondary btn-sm") %>
+              </span>
+          </h3>
       <% else %>
           <%= form_for @conn, session_path(@conn, :login),
           [as: "user", class: "form-inline"], fn f -> %>

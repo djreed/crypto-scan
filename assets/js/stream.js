@@ -543,7 +543,7 @@ $.getJSON(dataUrl, function(data) {
         ];
     }
 
-    console.log(currentSubs);
+    //console.log(currentSubs);
     for (var i = 0; i < currentSubs.length; i++) {
         currentSubsText += currentSubs[i] + ", ";
     }
@@ -559,11 +559,11 @@ socket.on('m', function(currentData) {
 });
 
 var transformData = function(data) {
-    
     var coinfsym = CCC.STATIC.CURRENCY.getSymbol(fsym);
     var cointsym = CCC.STATIC.CURRENCY.getSymbol(tsym)
+
     var incomingTrade = CCC.TRADE.unpack(data);
-    console.log(incomingTrade);
+    //console.log(incomingTrade);
     var newTrade = {
         Market: incomingTrade['M'],
         Type: incomingTrade['T'],
@@ -587,12 +587,19 @@ var transformData = function(data) {
 };
 
 var displayDataTrade = function(dataUnpacked) {
-    console.log(dataUnpacked);
+    //console.log(dataUnpacked);
 
     var maxTableSize = 30;
     var length = $('table tr').length;
     $('#trades').after(
-        "<tr class=" + dataUnpacked.Type + "><th>" + dataUnpacked.Market + "</th><th>" + dataUnpacked.Type + "</th><th>" + dataUnpacked.ID + "</th><th>" + dataUnpacked.Price + "</th><th>" + dataUnpacked.Quantity + "</th><th>" + dataUnpacked.Total + "</th></tr>"
+      "<tr class="+ dataUnpacked.Type + ">"
+                       + "<th>" + dataUnpacked.Market + "</th>"
+                       + "<th>" + dataUnpacked.Type + "</th>"
+                       + "<th>" + dataUnpacked.ID + "</th>"
+                       + "<th>" + dataUnpacked.Price + "</th>"
+                       + "<th>" + dataUnpacked.Quantity + "</th>"
+                       + "<th>" + dataUnpacked.Total + "</th>"
+                       + "</tr>"
     );
 
     if (length >= (maxTableSize)) {
@@ -600,30 +607,12 @@ var displayDataTrade = function(dataUnpacked) {
     }
 };
 
-$('#unsubscribe').click(function() {
-    console.log('Unsubscribing to streamers');
-    $('#subscribe').removeClass('subon');
-    $(this).addClass('subon');
-    $('#stream-text').text('Stream stopped');
-    socket.emit('SubRemove', { subs: currentSubs });
-    $('#sub-exchanges').text("");
-});
-
-$('#subscribe').click(function() {
-    console.log('Subscribing to streamers')
-    $('#unsubscribe').removeClass('subon');
-    $(this).addClass('subon');
-    $('#stream-text').text("Streaming...");
-    socket.emit('SubAdd', { subs: currentSubs });
-    $('#sub-exchanges').text(currentSubsText);
-});
-
 ///////////////////////////////////////
 /*     Aggregate price streaming     */
 ///////////////////////////////////////
 
 $(document).ready(function() {
-    var currentPrice = {};        
+    var currentPrice = {};
 
     var subscription = [
         '5~CCCAGG~BTC~USD',
@@ -698,7 +687,7 @@ $(document).ready(function() {
                 if (key == 'LASTMARKET') {
                     $('#' + current[key] + "_" + from + "_PRICE").text(current['PRICE']);
                 }
-                
+
                 $('#' + key + '_' + from).text(current[key]);
             }
         }

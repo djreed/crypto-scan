@@ -3,18 +3,23 @@
     <%= for currency <- @currencies do %>
         <div class="m-2">
             <div class="card card-body">
-                <h2 class="text-center"><%= currency.fullName %></h2>
-                <h5 class="price-display"><%= currency.abr %> - USD
+                <h2 class="text-center">
+                    <%= currency.fullName %>
+                </h2>
+                <h5 class="price-display">
+                    <%= currency.abr %> - USD
                     <span class="price" id="PRICE_<%= currency.abr %>">
                     </span>
                 </h5>
-	        <h5>24h Change:
+	        <h5>
+                    24h Change:
                     <span id="CHANGE24HOUR_<%= currency.abr %>"></span>
                     <span id="CHANGE24HOURPCT_<%= currency.abr %>"></span><br>
                 </h5>
-                <%= link("View", to: currency_path(@conn, :show, currency.abr),
-                    class: "btn btn-primary btn-sm") %>
-                </h5>
+                <div class="text-center">
+                    <%= link("View", to: currency_path(@conn, :show, currency.abr),
+                        class: "btn btn-primary") %>
+                </div>
             </div>
         </div>
     <% end %>

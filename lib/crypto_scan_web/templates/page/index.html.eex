@@ -1,53 +1,30 @@
 <div id="TICKER" hidden></div>
 
 <div class="row">
-    <div class="col-md-8 col-lg-offset-2">
-        <h1 class="text-center">Welcome to Crypto-Scan!<h1>
-            <h2 class="text-center"> Your resource for tracking your favorite crypto-currencies.</h2>
-            <div class="panel-group">
-                <div class="panel panel-primary">
-                    <div class="panel-heading text-center">
-                        <h4>BTC-USD Market Trades</h4>
-                        <div id="currencyAbbreviation" hidden>BTC</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row btn-row">
-                            <div class="col-md-4">
-                                <h3 id="stream-text">Streaming...</h3>
-                            </div>
-                            <div class="col-md-2 mx-3 my-1">
-                                <a class="btn btn-success btn-lg subon" id="subscribe">Subscribe</a>
-                            </div>
-                            <div class="col-md-2 mx-3 my-1">
-                                <a class="btn btn-danger btn-lg" id="unsubscribe">Unsubscribe</a>
-                            </div>
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Market</th>
-                                    <th>Type</th>
-                                    <th>ID</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody id="trades">
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="col-md-12 col-lg-offset-2">
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h4>BTC-USD Market Trades</h4>
+                    <div id="currencyAbbreviation" hidden>BTC</div>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Market</th>
+                                <th>Type</th>
+                                <th>ID</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trades">
+                        </tbody>
+                    </table>
                 </div>
             </div>
-    </div>
-    <div class="col-md-4">
-        <%= if @current_user do %>
-            <div class="card card-body">
-                <h3 class="text-center"><%= @current_user.name %></h3>
-                <h4 class="text-center"><%= @current_user.email %></h4>
-            </div>
-        <% else %>
-            <h3 class="text-center">Click <a href="users/new">here</a> to create an account.</h3>
-        <% end %>
+        </div>
     </div>
 </div>

@@ -37,33 +37,23 @@
             <div class="panel panel-default panel-primary">
                 <div class="panel-heading text-center">
                     <h4><%= @name %> Market Trades</h4>
+                    <div id="currencyAbbreviation" hidden>BTC</div>
                 </div>
                 <div class="panel-body">
-                    <div class="row btn-row">
-                        <div class="col-md-4">
-                            <h3 id="stream-text">Streaming...</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <a class="btn btn-success btn-lg subon" id="subscribe">Start</a>
-                        </div>
-                        <div class="col-md-4">
-                            <a class="btn btn-danger btn-lg" id="unsubscribe">Stop</a>
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Market</th>
-                                    <th>Type</th>
-                                    <th>ID</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Market</th>
+                                <th>Type</th>
+                                <th>ID</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
                                 </tr>
-                            </thead>
-                            <tbody id="trades">
-                            </tbody>
-                        </table>
-                    </div>
+                        </thead>
+                        <tbody id="trades">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
