@@ -21,6 +21,7 @@ config :crypto_scan, MicroblogWeb.Endpoint,
   root: ".",
   version: Application.spec(:crypto_scan, :vsn)
 
+
 # Do not print debug messages in production
 config :logger, level: :info
 
