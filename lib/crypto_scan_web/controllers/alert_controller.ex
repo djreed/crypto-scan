@@ -4,14 +4,12 @@ defmodule CryptoScanWeb.AlertController do
   alias CryptoScan.Feedback
   alias CryptoScan.Feedback.Alert
 
-  def index(conn, _params) do
-    alerts = Feedback.list_alerts()
-    render(conn, "index.html", alerts: alerts)
-  end
-
   def new(conn, _params) do
     changeset = Feedback.change_alert(%Alert{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset,
+      currencies: CryptoScan.Currency.values,
+      exchanges: CryptoScan.Exchange.values,
+      comparators: CryptoScan.Comparator.values)
   end
 
   def create(conn, %{"alert" => alert_params}) do
@@ -21,7 +19,10 @@ defmodule CryptoScanWeb.AlertController do
         |> put_flash(:info, "Alert created successfully.")
         |> redirect(to: alert_path(conn, :show, alert))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset,
+          currencies: CryptoScan.Currency.values,
+          exchanges: CryptoScan.Exchange.values,
+          comparators: CryptoScan.Comparator.values)
     end
   end
 
@@ -33,7 +34,10 @@ defmodule CryptoScanWeb.AlertController do
   def edit(conn, %{"id" => id}) do
     alert = Feedback.get_alert!(id)
     changeset = Feedback.change_alert(alert)
-    render(conn, "edit.html", alert: alert, changeset: changeset)
+    render(conn, "edit.html", alert: alert, changeset: changeset,
+      currencies: CryptoScan.Currency.values,
+      exchanges: CryptoScan.Exchange.values,
+      comparators: CryptoScan.Comparator.values)
   end
 
   def update(conn, %{"id" => id, "alert" => alert_params}) do
@@ -60,10 +64,5 @@ defmodule CryptoScanWeb.AlertController do
     conn
     |> put_flash(:info, "Alert deleted successfully.")
     |> redirect(to: user_path(conn, :show, user_id))
-  end
-
-  def reset(conn, %{"id" => id}) do
-    alert = Feedback.get_alert!(id)
-    Feedback.reset(alert)
   end
 end
