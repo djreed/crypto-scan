@@ -1,6 +1,7 @@
 defmodule CryptoScan.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  alias CryptoScan.Accounts
   alias CryptoScan.Accounts.User
 
   schema "users" do
@@ -28,6 +29,14 @@ defmodule CryptoScan.Accounts.User do
   end
 
   ### Password validation ###
+  def get_and_auth_user(email, password) do
+    user = Accounts.get_user_by_email!(email)
+    case Comeonin.Pbkdf2.check_pass(user, password) do
+      {:ok, user} -> user
+      _else       -> nil
+    end
+  end
+
   # From Comeonin docs
   def validate_password(changeset, field, options \\ []) do
     validate_change(changeset, field, fn _, password ->
@@ -40,7 +49,7 @@ defmodule CryptoScan.Accounts.User do
 
   defp put_pass_hash(%Ecto.Changeset{valid?: true, changes:
                                      %{password: password}} = changeset) do
-    change(changeset, Comeonin.Argon2.add_hash(password))
+    change(changeset, Comeonin.Pbkdf2.add_hash(password))
   end
   defp put_pass_hash(changeset), do: changeset
 

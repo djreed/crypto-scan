@@ -42,14 +42,14 @@ defmodule CryptoScan.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:distillery, "~> 1.4"},
+      {:pbkdf2_elixir, "~> 0.12"},
       {:exnumerator, "~> 1.3.0"},
       {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
-      {:argon2_elixir, "~> 1.2"},
       {:quantum, ">= 2.2.0"},
       {:timex, "~> 3.0"},
-      {:bamboo, "~> 0.8"}
+      {:bamboo, "~> 0.8"},
+      {:distillery, "~> 1.4"}
     ]
   end
 
