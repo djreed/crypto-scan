@@ -2,7 +2,7 @@
 <div class="card-deck">
     <%= for currency <- @currencies do %>
         <div class="m-2">
-            <div class="card card-body bg-dark">
+            <div class="card card-body bg-primary">
                 <h2 class="text-center">
                     <%= currency.fullName %>
                 </h2>

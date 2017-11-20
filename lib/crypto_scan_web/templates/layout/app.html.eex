@@ -12,8 +12,8 @@
         <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     </head>
 
-    <body class="mb-4 bg-primary">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <body class="mb-4">
+        <nav class="navbar navbar-expand-md navbar-dark">
             <a class="navbar-brand" href="/">
                 Crypto-Scan
             </a>

@@ -5,7 +5,7 @@
         <div class="card-deck">
             <%= for follow <- @user.follows do %>
                 <div class="m-2">
-                    <div class="card card-body bg-dark">
+                    <div class="card card-body bg-primary">
                         <h4 class="text-center">
                             <%= follow.exchange %> - <%= follow.currency %>
                         </h4>
@@ -34,7 +34,7 @@
     <div class="col-md-3">
         <h1 class="text-center">Email Alerts</h1>
         <%= for alert <- @user.alerts do %>
-            <div class="card card-body bg-dark">
+            <div class="card card-body bg-primary">
                 <div>
                     <%= alert.currency %> at <%= alert.exchange %> <%= alert.comparator %> $<%= alert.breakpoint %>
                 </div>
@@ -54,7 +54,7 @@
         <% end %>
         <div class="m-2 text-right">
             <%= link "New", to: alert_path(@conn, :new),
-            class: "btn btn-dark" %>
+            class: "btn btn-primary" %>
         </div>
     </div>
 </div>
