@@ -1,7 +1,7 @@
 <div id="CURRENT_PRICING" hidden></div>
 <div class="container">
     <div class="row">
-        <div class="col-md-5 price-boxes">
+        <div class="col-md-5 price-boxes bg-primary">
             <div class="panel-group">
 	        <div class="panel panel-default">
 	            <div class="panel-body">
@@ -57,29 +57,31 @@
             <h1 class="text-center"><%= @fullName %></h1>
             <div id="currencyAbbreviation" hidden><%= @name %></div>
             <%= for price <- @allPrices do %>
-                <%= if price != nil do %>
-                    <%= form_for @follow, follow_path(@conn, :create), [class: "form-inline"], fn f -> %>
-                    <%= if @current_user do %>
-                        <%= if @follow.action do %>
-                            <div class="alert alert-danger">
-                                <p>Oops, something went wrong! Please check the errors below.</p>
-                            </div>
+                <div class="bg-primary">
+                    <%= if price != nil do %>
+                        <%= form_for @follow, follow_path(@conn, :create), [class: "form-inline"], fn f -> %>
+                        <%= if @current_user do %>
+                            <%= if @follow.action do %>
+                                <div class="alert alert-danger">
+                                    <p>Oops, something went wrong! Please check the errors below.</p>
+                                </div>
+                            <% end %>
+                            
+                            <%= hidden_input :follow, :user_id, value: @current_user.id %>
+                            <%= hidden_input :follow, :currency, value: @name %>
+                            <%= hidden_input :follow, :exchange, value: price.name %>
+                            
+                            <%= submit "Follow", class: "btn btn-primary m-2" %>
                         <% end %>
-                        
-                        <%= hidden_input :follow, :user_id, value: @current_user.id %>
-                        <%= hidden_input :follow, :currency, value: @name %>
-                        <%= hidden_input :follow, :exchange, value: price.name %>
-                        
-                        <%= submit "Follow", class: "btn btn-primary m-2" %>
+                        <h3>
+                            <%= price.name %> Price:
+                            <span id="<%= price.name %>_<%= @name %>_PRICE">
+                                <%= price.exchangePrice %>
+                            </span> USD
+                        </h3>
                     <% end %>
-                    <h3>
-                        <%= price.name %> Price:
-                        <span id="<%= price.name %>_<%= @name %>_PRICE">
-                            <%= price.exchangePrice %>
-                        </span> USD
-                    </h3>
-                <% end %>
             <% end %>
+                </div>
       <% end %>
         </div>
     </div>
