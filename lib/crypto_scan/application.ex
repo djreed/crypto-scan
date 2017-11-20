@@ -13,6 +13,7 @@ defmodule CryptoScan.Application do
 
       # Start the endpoint when the application starts
       supervisor(CryptoScanWeb.Endpoint, []),
+      worker(CryptoScan.Scheduler, []),
       # Start your own worker by calling: CryptoScan.Worker.start_link(arg1, arg2, arg3)
       # worker(CryptoScan.Worker, [arg1, arg2, arg3]),
     ]

@@ -1,7 +1,7 @@
 #fetch_user NOT CREATED BY ME
 # ATTRIBUED TO PROFESSOR NAT TUCK
 
-defmodule MicroblogWeb.Plugs do
+defmodule CryptoScanWeb.Plugs do
 import Plug.Conn
 def fetch_user(conn, _opts) do
  user_id = get_session(conn, :user_id)

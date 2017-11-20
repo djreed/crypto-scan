@@ -102,25 +102,28 @@ defmodule CryptoScan.Feedback do
     Alert.changeset(alert, %{})
   end
 
-  def reset_alert(%Alert{} = alert) do
+  def fire_alert(%Alert{} = alert) do
     alert
     |> Alert.changeset(%{fired: "true"})
     |> Repo.update()
   end
 
-  def crossThreshold do
+  def emailAlerts do
     alerts = CryptoScan.Feedback.list_alerts
 
     for alert <- alerts do
       price = CryptoScan.priceFromExchange(alert.currency, alert.exchange)
       if (alert.comparator == "less than") do
-        if (price < alert.breakpoint) do
+        if (price < alert.breakpoint and !alert.fired) do
           user = CryptoScan.Accounts.get_user!(alert.user_id)
           EmailAlert.email(user.email, alert)
+          fire_alert(alert)
         end
       else
-        if (price > alert.breakpoint) do
-          IO.puts "ABOVE"
+        if (price > alert.breakpoint and !alert.fired) do
+          user = CryptoScan.Accounts.get_user!(alert.user_id)
+          EmailAlert.email(user.email, alert)
+          fire_alert(alert)
         end
       end
     end
