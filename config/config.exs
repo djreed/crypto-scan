@@ -22,6 +22,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Cron Job to send Alerts
+config :crypto_scan, CryptoScan.Scheduler,
+  jobs: [
+     {"*/2 * * * *",      {CryptoScan.Feedback, :emailAlerts, []}},
+  ]
+
 # import email api data
 import_config "email_api.secret.exs"
 
