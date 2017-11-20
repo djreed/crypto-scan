@@ -5,28 +5,28 @@
         <div class="card-deck">
             <%= for follow <- @user.follows do %>
                 <div class="m-2">
-                <div class="card card-body">
-                    <h4 class="text-center">
-                        <%= follow.exchange %> - <%= follow.currency %>
-                    </h4>
-                    <h6 class="price-display"><%= follow.currency %> - USD
-                        <span class="price" id="<%= follow.exchange %>_<%= follow.currency %>_PRICE">
-                        </span>
-                    </h6>
-                    <h6>24h Change:
-                        <span id="CHANGE24HOUR_<%= follow.currency %>">
-                        </span>
-                        <span id="CHANGE24HOURPCT_<%= follow.currency %>">
-                        </span><br>
-                    </h6>
-                    <div class="text-center">
-                        <%= link "Currency", to: currency_path(@conn, :show, follow.currency), class: "btn btn-primary btn-sm" %>
-                        <%= link "Exchange", to: exchange_path(@conn, :show, follow.exchange), class: "btn btn-primary btn-sm" %>
-                        <%= link "Delete", to: follow_path(@conn, :delete, follow),
-                        method: :delete, data: [confirm: "Are you sure?"],
-                        class: "btn btn-danger btn-sm" %>
+                    <div class="card card-body bg-dark">
+                        <h4 class="text-center">
+                            <%= follow.exchange %> - <%= follow.currency %>
+                        </h4>
+                        <h6 class="price-display"><%= follow.currency %> - USD
+                            <span class="price" id="<%= follow.exchange %>_<%= follow.currency %>_PRICE">
+                            </span>
+                        </h6>
+                        <h6>24h Change:
+                            <span id="CHANGE24HOUR_<%= follow.currency %>">
+                            </span>
+                            <span id="CHANGE24HOURPCT_<%= follow.currency %>">
+                            </span><br>
+                        </h6>
+                        <div class="text-center">
+                            <%= link "Currency", to: currency_path(@conn, :show, follow.currency), class: "btn btn-primary btn-sm" %>
+                            <%= link "Exchange", to: exchange_path(@conn, :show, follow.exchange), class: "btn btn-primary btn-sm" %>
+                            <%= link "Delete", to: follow_path(@conn, :delete, follow),
+                            method: :delete, data: [confirm: "Are you sure?"],
+                            class: "btn btn-danger btn-sm" %>
+                        </div>
                     </div>
-                </div>
                 </div>
             <% end %>
         </div>
@@ -34,7 +34,7 @@
     <div class="col-md-3">
         <h1 class="text-center">Email Alerts</h1>
         <%= for alert <- @user.alerts do %>
-            <div class="card card-body">
+            <div class="card card-body bg-dark">
                 <div>
                     <%= alert.currency %> at <%= alert.exchange %> <%= alert.comparator %> $<%= alert.breakpoint %>
                 </div>
@@ -45,13 +45,16 @@
                 </span>
                 <div class="text-right">
                     <%= link "Edit", to: alert_path(@conn, :edit, alert),
-                    class: "btn btn-primary btn-xs" %>
+                    class: "btn btn-primary btn-sm" %>
+                    <%= link "Delete", to: alert_path(@conn, :delete, alert),
+                    method: :delete, data: [confirm: "Are you sure?"],
+                    class: "btn btn-danger btn-sm" %>
                 </div>
             </div>
         <% end %>
-        <%= link "New", to: alert_path(@conn, :new),
-        class: "btn btn-primary btn-xs m-2 text-right" %>
+        <div class="m-2 text-right">
+            <%= link "New", to: alert_path(@conn, :new),
+            class: "btn btn-dark" %>
+        </div>
     </div>
 </div>
-
-<span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>

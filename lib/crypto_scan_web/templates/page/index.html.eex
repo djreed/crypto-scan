@@ -1,10 +1,10 @@
 <div id="TICKER" hidden></div>
 
-<div class="row">
+<div class="row bg-dark">
     <div class="col-md-12 col-lg-offset-2">
         <div class="panel-group">
             <div class="panel panel-primary">
-                <div class="panel-heading text-center">
+                <div class="panel-heading text-center m-3">
                     <h4>BTC-USD Market Trades</h4>
                     <div id="currencyAbbreviation" hidden>BTC</div>
                 </div>

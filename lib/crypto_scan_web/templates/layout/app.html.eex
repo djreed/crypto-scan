@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Crypto-currency trade summaries">
-    <meta name="author" content="David Reed & Dean Kullas">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Crypto-currency trade summaries">
+        <meta name="author" content="David Reed & Dean Kullas">
 
 
-    <title>Crypto-Scan</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+        <title>Crypto-Scan</title>
+        <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    </head>
 
-  <body class="mb-4">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="/">
-          Crypto-Scan
-      </a>
-      <button class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarColor01"
-              aria-controls="navbarColor01"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              style="">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">
-              Home
-              <span class="sr-only">(current)</span>
+    <body class="mb-4 bg-primary">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">
+                Crypto-Scan
             </a>
-          </li>
-          <%= if @current_user do %>
-              <%= link("Profile", to: user_path(@conn, :show, @current_user),
-                  class: "nav-link") %>
-          <% else %>
-              <%= link("New User", to: user_path(@conn, :new),
-                  class: "nav-link") %>
-          <% end %>
-          <%= link("Currencies", to: currency_path(@conn, :index),
-              class: "nav-link") %>
-          <%= link("Exchanges", to: exchange_path(@conn, :index),
-              class: "nav-link") %>
-        </ul>
-      </div>
 
-      <%= if @current_user do %>
-          <h3 class="">
-              <%= @current_user.email %> | 
-              <span>
-                  <%= link("Logout", to: session_path(@conn, :logout),
-                      method: :delete, class: "btn btn-secondary btn-sm") %>
-              </span>
-              <span>
-                  <%= link("Edit", to: user_path(@conn, :edit, @current_user),
-                      class: "btn btn-secondary btn-sm") %>
-              </span>
-          </h3>
-      <% else %>
-          <%= form_for @conn, session_path(@conn, :login),
-          [as: "user", class: "form-inline"], fn f -> %>
-          <input type="text" placeholder="email"
-                 class="form-control" name="email">
-          <input type="password" placeholder="password"
-                class="form-control" name="password">
-          <input type="submit" value="Log in" class="btn btn-primary">
-      <% end %>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            Home
+                        </a>
+                    </li>
+                    <%= if @current_user do %>
+                        <%= link("Profile", to: user_path(@conn, :show, @current_user),
+                            class: "nav-link") %>
+                    <% else %>
+                        <%= link("New User", to: user_path(@conn, :new),
+                            class: "nav-link") %>
+                    <% end %>
+                    <%= link("Currencies", to: currency_path(@conn, :index),
+                        class: "nav-link") %>
+                    <%= link("Exchanges", to: exchange_path(@conn, :index),
+                        class: "nav-link") %>
+                </ul>
+
+                <%= if @current_user do %>
+                    <span class="navbar-text text-light mx-3">
+                        <%= @current_user.name %> (<%= @current_user.email %>)
+                    </span>
+                    <%= link("Edit", to: user_path(@conn, :edit, @current_user),
+                        class: "nav-link") %>
+                    <%= link("Logout", to: session_path(@conn, :logout),
+                        method: :delete, class: "nav-link") %>
+                <% else %>
+                    <%= form_for @conn, session_path(@conn, :login),
+                    [as: "user", class: "form-inline"], fn f -> %>
+                    <input type="text" placeholder="email"
+                           class="form-control" name="email">
+                    <input type="password" placeholder="password"
+                           class="form-control" name="password">
+                    <input type="submit" value="Log in" class="btn btn-primary">
+                <% end %>
            <% end %>
+            </div>
            
-    </nav>
-    
-    <div class="container my-3">
-        <%= if get_flash(@conn, :info) do %>
-            <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <% end %>
-        <%= if get_flash(@conn, :error) do %>
-            <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-        <% end %>
+           <button class="navbar-toggler"
+                   type="button"
+                   data-toggle="collapse"
+                   data-target="#navbarColor01"
+                   aria-controls="navbarColor01"
+                   aria-expanded="false"
+                   aria-label="Toggle navigation"
+                   style="">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+        </nav>
         
-        <main>
-            <%= render @view_module, @view_template, assigns %>
-        </main>
+        <div class="container my-3">
+            <%= if get_flash(@conn, :info) do %>
+                <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+            <% end %>
+            <%= if get_flash(@conn, :error) do %>
+                <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+            <% end %>
+            
+            <main>
+                <%= render @view_module, @view_template, assigns %>
+            </main>
+            
+        </div>
         
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    
-  </body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+        
+    </body>
 </html>

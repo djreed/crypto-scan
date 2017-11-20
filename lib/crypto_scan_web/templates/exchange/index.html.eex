@@ -1,6 +1,6 @@
 <div class="card-deck">
     <%= for exchange <- @exchanges do %>
-        <div class="card card-body">
+        <div class="card card-body bg-dark">
             <h4 class="text-center"><%= exchange %></h4>
             <div class="text-center">
                 <%= link "Show", to: exchange_path(@conn, :show, exchange),
