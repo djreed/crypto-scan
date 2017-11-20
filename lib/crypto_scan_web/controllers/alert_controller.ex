@@ -39,11 +39,13 @@ defmodule CryptoScanWeb.AlertController do
   def update(conn, %{"id" => id, "alert" => alert_params}) do
     alert = Feedback.get_alert!(id)
 
+    user_id = get_session(conn, :user_id);
+
     case Feedback.update_alert(alert, alert_params) do
       {:ok, alert} ->
         conn
         |> put_flash(:info, "Alert updated successfully.")
-        |> redirect(to: alert_path(conn, :show, alert))
+        |> redirect(to: user_path(conn, :show, user_id))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", alert: alert, changeset: changeset)
     end
@@ -53,8 +55,15 @@ defmodule CryptoScanWeb.AlertController do
     alert = Feedback.get_alert!(id)
     {:ok, _alert} = Feedback.delete_alert(alert)
 
+    user_id = get_session(conn, :user_id);
+
     conn
     |> put_flash(:info, "Alert deleted successfully.")
-    |> redirect(to: alert_path(conn, :index))
+    |> redirect(to: user_path(conn, :show, user_id))
+  end
+
+  def reset(conn, %{"id" => id}) do
+    alert = Feedback.get_alert!(id)
+    Feedback.reset(alert)
   end
 end

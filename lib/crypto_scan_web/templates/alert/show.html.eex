@@ -23,6 +23,3 @@
   </li>
 
 </ul>
-
-<span><%= link "Edit", to: alert_path(@conn, :edit, @alert) %></span>
-<span><%= link "Back", to: alert_path(@conn, :index) %></span>

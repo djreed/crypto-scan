@@ -34,11 +34,13 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Profile
-            </a>
-          </li>
+          <%= if @current_user do %>
+              <%= link("Profile", to: user_path(@conn, :show, @current_user),
+                  class: "nav-link") %>
+          <% else %>
+              <%= link("New User", to: user_path(@conn, :new),
+                  class: "nav-link") %>
+          <% end %>
           <%= link("Currencies", to: currency_path(@conn, :index),
               class: "nav-link") %>
           <%= link("Exchanges", to: exchange_path(@conn, :index),

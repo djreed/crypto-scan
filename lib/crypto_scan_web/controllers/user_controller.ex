@@ -27,7 +27,16 @@ defmodule CryptoScanWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
-    user = CryptoScan.Repo.preload(user, :follows)
+
+    current_user = get_session(conn, :user_id)
+
+    if (current_user != user.id) do
+      conn
+      |> put_flash(:info, "Log in as a user to view their page.")
+      |> redirect(to: page_path(conn, :index))
+    end
+
+    user = CryptoScan.Repo.preload(user, [:follows, :alerts])
     CryptoScan.Feedback.crossThreshold
 
     prices = for follow <- user.follows do

@@ -102,6 +102,12 @@ defmodule CryptoScan.Feedback do
     Alert.changeset(alert, %{})
   end
 
+  def reset_alert(%Alert{} = alert) do
+    alert
+    |> Alert.changeset(%{fired: "true"})
+    |> Repo.update()
+  end
+
   def crossThreshold do
     alerts = CryptoScan.Feedback.list_alerts
 

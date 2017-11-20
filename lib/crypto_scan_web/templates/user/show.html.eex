@@ -24,6 +24,22 @@
   </div>
   <div class="col-md-3">
     <h1 class="text-center">Email Alerts</h1>
+    <%= for alert <- @user.alerts do %>
+        <div class="card card-body">
+            <div>
+                <%= alert.currency %> at <%= alert.exchange %> <%= alert.comparator %> $<%= alert.breakpoint %>
+            </div>
+            <span>
+                <%= if alert.fired == "true" do %>
+                    Alert triggered
+                <% end %>
+            </span>
+            <div class="text-right">
+                <%= link "Edit", to: alert_path(@conn, :edit, alert),
+                class: "btn btn-primary btn-xs" %>
+            </div>
+        </div>
+    <% end %>
   </div>
 </div>
 

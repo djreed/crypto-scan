@@ -3,9 +3,8 @@ defmodule CryptoScan.Feedback.Alert do
   import Ecto.Changeset
   alias CryptoScan.Feedback.Alert
 
-
   schema "alerts" do
-    field :user_id, :id
+    belongs_to :user, CryptoScan.Accounts.User
     field :breakpoint, :decimal
     field :comparator, CryptoScan.Comparator
     field :currency, CryptoScan.Currency
