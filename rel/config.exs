@@ -30,13 +30,13 @@ environment :dev do
   # dev mode.
   set dev_mode: true
   set include_erts: false
-  set cookie: :"QFCG*RPW2VNs2Snp*[Ahb6qS6[AUL&5nSIDV9l>pYXRvENRXOpYxV*mo0rj|vAA7"
+  set cookie: :"X?9K@vq%=xW<ZQy@C4]C[Hk=cX0[H1SOQ58{~;4i*dI@NC1O13be${xj@2Y}HdQI"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"?z1RpWSjexiEj<b/THGmrzgno;qd5{3BDWv%OaL~,c9J*VL!D$(q99C.hwAC8<E$"
+  set cookie: :"&_zW|/zxfjqeqc2wa0VTWy>bbccVA<KE)!<IyQYWYp%?3e~P]<jdC`D:REt[^Z8j"
 end
 
 # You may define one or more releases in this file.
@@ -52,5 +52,6 @@ release :crypto_scan do
   set commands: [
     "migrate": "rel/commands/migrate.sh"
   ]
+
 end
 
