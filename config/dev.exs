@@ -51,7 +51,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :crypto_scan, CryptoScan.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "crypto_scan",
+  username: "crypto_scan_dev",
   password: "dev_crypto_scan",
   database: "crypto_scan_dev",
   hostname: "localhost",
