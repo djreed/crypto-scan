@@ -113,14 +113,14 @@ defmodule CryptoScan.Feedback do
 
     for alert <- alerts do
       price = CryptoScan.priceFromExchange(alert.currency, alert.exchange)
-      if (alert.comparator == CryptoScan.Comparator.values[0]) do
+      if (alert.comparator == Enum.at(CryptoScan.Comparator.values, 0)) do
         if (price < alert.breakpoint and !alert.fired) do
           user = CryptoScan.Accounts.get_user!(alert.user_id)
           EmailAlert.email(user.email, alert)
           fire_alert(alert)
         end
       end
-      if (alert.comparator == CryptoScan.Comparator.values[1]) do
+      if (alert.comparator == Enum.at(CryptoScan.Comparator.values, 1)) do
         if (price > alert.breakpoint and !alert.fired) do
           user = CryptoScan.Accounts.get_user!(alert.user_id)
           EmailAlert.email(user.email, alert)
