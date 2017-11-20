@@ -1,7 +1,7 @@
 <div id="CURRENT_PRICING" hidden></div>
 <div class="container">
     <div class="row">
-        <div class="col-md-5 price-boxes bg-primary">
+        <div class="col-md-5 price-boxes bg-dark">
             <div class="panel-group">
 	        <div class="panel panel-default">
 	            <div class="panel-body">
@@ -57,7 +57,7 @@
             <h1 class="text-center"><%= @fullName %></h1>
             <div id="currencyAbbreviation" hidden><%= @name %></div>
             <%= for price <- @allPrices do %>
-                <div class="bg-primary">
+                <div class="bg-dark">
                     <%= if price != nil do %>
                         <%= form_for @follow, follow_path(@conn, :create), [class: "form-inline"], fn f -> %>
                         <%= if @current_user do %>
